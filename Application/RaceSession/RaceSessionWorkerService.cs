@@ -1,4 +1,5 @@
 ﻿using Application.RaceSession.Abstractions;
+using Application.Models;
 using Domain.Models;
 using Infrastructure.RaceSession.Abstractions;
 
@@ -7,29 +8,35 @@ namespace Application.RaceSession
     public class RaceSessionWorkerService : IRaceSessionWorkerService
     {
         private readonly IRaceSessionClient _raceStateClient;
-        private RaceSessionDto? _previousRaceState;
+        private RaceSessionDto? _previousRaceSession;
 
         public RaceSessionWorkerService(IRaceSessionClient raceStatePoller)
         {
             _raceStateClient = raceStatePoller ?? throw new ArgumentNullException(nameof(raceStatePoller));
         }
 
-        public async Task CheckForChangesAsync(CancellationToken cancellationToken)
+        public async Task<SessionUpdateDto> CheckForChangesAsync(string sessionId, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            RaceSessionDto? currentRaceState = await _raceStateClient.GetCurrentStateAsync(cancellationToken);
+            RaceSessionDto? currentRaceSession = await _raceStateClient.GetCurrentStateAsync(sessionId, cancellationToken);
 
             // Using records value based equality here
-            if (currentRaceState == _previousRaceState)
+            if (currentRaceSession == _previousRaceSession)
             {
-                return;
+                return new SessionUpdateDto()
+                {
+                    IsUpdated = false
+                };
             }
 
-            // TODO: Broadcast data change
-            Console.WriteLine("Change detected");
+            _previousRaceSession = currentRaceSession;
 
-            _previousRaceState = currentRaceState;
+            return new SessionUpdateDto()
+            {
+                IsUpdated = true,
+                RaceSession = currentRaceSession
+            };
         }
     }
 }

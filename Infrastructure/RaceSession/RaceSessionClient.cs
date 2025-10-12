@@ -6,7 +6,7 @@ namespace Infrastructure.RaceSession
 {
     public class RaceSessionClient : IRaceSessionClient
     {
-        private const string SessionsEndpointUrl = "sessions";
+        private const string SessionsEndpointUrl = "sessions/";
 
         private readonly HttpClient _httpClient;
 
@@ -15,9 +15,11 @@ namespace Infrastructure.RaceSession
             _httpClient = httpClient;
         }
 
-        public async Task<RaceSessionDto?> GetCurrentStateAsync(CancellationToken cancellationToken)
+        public async Task<RaceSessionDto?> GetCurrentStateAsync(string sessionId, CancellationToken cancellationToken)
         {
-            var response = await _httpClient.GetAsync(SessionsEndpointUrl, cancellationToken);
+            string url = GetUrl(sessionId);
+
+            var response = await _httpClient.GetAsync(url, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
             {
@@ -28,5 +30,7 @@ namespace Infrastructure.RaceSession
 
             return JsonSerializer.Deserialize<RaceSessionDto?>(jsonContent);
         }
+
+        private static string GetUrl(string sessionId) => $"{SessionsEndpointUrl}/{sessionId}";
     }
 }

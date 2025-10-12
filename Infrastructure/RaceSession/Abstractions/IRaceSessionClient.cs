@@ -4,6 +4,6 @@ namespace Infrastructure.RaceSession.Abstractions
 {
     public interface IRaceSessionClient
     {
-        Task<RaceSessionDto?> GetCurrentStateAsync(CancellationToken cancellationToken);
+        Task<RaceSessionDto?> GetCurrentStateAsync(string sessionId, CancellationToken cancellationToken);
     }
 }

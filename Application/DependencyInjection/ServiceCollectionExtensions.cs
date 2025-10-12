@@ -9,6 +9,7 @@ namespace Application.DependencyInjection
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddSingleton<IRaceSessionWorkerService, RaceSessionWorkerService>();
+            services.AddScoped<IRaceSessionService, RaceSessionService>();
             services.AddHostedService<RaceSessionWorker>();
 
             return services;
