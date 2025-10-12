@@ -11,6 +11,8 @@ namespace Infrastructure.DependencyInjection
 
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
+            services.AddSingleton<IRaceSessionBroadcastService, RaceSessionBroadcastService>();
+
             services.AddHttpClient<IRaceSessionClient, RaceSessionClient>(client =>
             {
                 client.BaseAddress = new Uri(RaceStateBaseUrl);

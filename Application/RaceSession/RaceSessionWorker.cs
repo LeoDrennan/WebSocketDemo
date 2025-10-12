@@ -26,7 +26,7 @@ namespace Application.RaceSession
                 // I'm assuming there is a better way to execute this in batch - would be a next step
                 foreach (string sessionId in _sessionTrackingService.GetActiveSessions())
                 {
-                    SessionUpdateDto dto = await _workerService.CheckForChangesAsync("", cancellationToken);
+                    SessionUpdateDto dto = await _workerService.CheckForChangesAsync(sessionId, cancellationToken);
 
                     if (dto.IsUpdated)
                     {
