@@ -1,6 +1,8 @@
-﻿namespace Application.Services
+﻿using Domain.Abstractions.Services;
+
+namespace Application.Services
 {
-    public class RaceStateService
+    public class RaceStateService : IRaceStateService
     {
 
     }
