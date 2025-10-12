@@ -10,10 +10,10 @@ namespace Presentation
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddSignalR();
-
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices();
+
+            builder.Services.AddSignalR();
 
             var app = builder.Build();
 

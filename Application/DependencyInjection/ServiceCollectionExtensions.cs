@@ -1,5 +1,5 @@
-﻿using Application.Services;
-using Domain.Abstractions.Services;
+﻿using Application.RaceState;
+using Application.RaceState.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.DependencyInjection
@@ -8,7 +8,7 @@ namespace Application.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IRaceStateService, RaceStateService>();
+            services.AddScoped<IRaceStateWorkerService, RaceStateWorkerService>();
 
             return services;
         }

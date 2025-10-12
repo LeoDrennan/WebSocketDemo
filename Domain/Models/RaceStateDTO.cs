@@ -1,6 +1,6 @@
 ﻿namespace Domain.Models
 {
-    public class RaceStateDTO
+    public record RaceStateDTO
     {
 
     }
