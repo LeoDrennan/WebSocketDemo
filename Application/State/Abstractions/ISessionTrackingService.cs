@@ -2,8 +2,8 @@
 {
     public interface ISessionTrackingService
     {
-        void AddSession(string sessionId);
-        void RemoveSession(string sessionId);
+        void AddConnection(string connectionId, string sessionId);
+        void RemoveConnection(string connectionId);
         IEnumerable<string> GetActiveSessions();
     }
 }

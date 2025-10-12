@@ -14,14 +14,14 @@ namespace Infrastructure.RaceSession
             _hubContext = hubContext;
         }
 
-        public async Task AddToGroupAsync(string connectionId, string sessionId)
+        public async Task AddToGroupAsync(string connectionId, string sessionId, CancellationToken cancellationToken)
         {
-            await _hubContext.Groups.AddToGroupAsync(connectionId, sessionId);
+            await _hubContext.Groups.AddToGroupAsync(connectionId, sessionId, cancellationToken);
         }
 
-        public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto session)
+        public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto session, CancellationToken cancellationToken)
         {
-            await _hubContext.Clients.Group(sessionId).SendAsync("ReceiveSessionUpdate", session);
+            await _hubContext.Clients.Group(sessionId).SendAsync("ReceiveSessionUpdate", session, cancellationToken);
         }
     }
 }

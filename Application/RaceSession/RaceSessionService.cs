@@ -15,10 +15,15 @@ namespace Application.RaceSession
             _trackingService = sessionTrackingService ?? throw new ArgumentNullException(nameof(sessionTrackingService));
         }
 
-        public async Task SubscribeAsync(string connectionId, string sessionId)
+        public async Task SubscribeAsync(string connectionId, string sessionId, CancellationToken cancellationToken)
         {
-            _trackingService.AddSession(sessionId);
-            await _broadcastService.AddToGroupAsync(connectionId, sessionId);
+            _trackingService.AddConnection(connectionId, sessionId);
+            await _broadcastService.AddToGroupAsync(connectionId, sessionId, cancellationToken);
+        }
+
+        public void UnsubscribeAsync(string connectionId)
+        {
+            _trackingService.RemoveConnection(connectionId);
         }
     }
 }

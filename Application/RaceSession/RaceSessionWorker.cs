@@ -9,7 +9,6 @@ namespace Application.RaceSession
     {
         private const int RequestIntervalMilliseconds = 10000;
 
-        // Injecting so we can unit test the functionality of this class
         private readonly IRaceSessionWorkerService _workerService;
         private readonly ISessionTrackingService _sessionTrackingService;
 
@@ -30,7 +29,7 @@ namespace Application.RaceSession
 
                     if (dto.IsUpdated)
                     {
-                        await _workerService.BroadcastUpdateAsync(sessionId, dto.RaceSession!);
+                        await _workerService.BroadcastUpdateAsync(sessionId, dto.RaceSession!, cancellationToken);
                     }
                 }
 

@@ -2,6 +2,7 @@
 {
     public interface IRaceSessionService
     {
-        Task SubscribeAsync(string connectionId, string sessionId);
+        Task SubscribeAsync(string connectionId, string sessionId, CancellationToken cancellationToken);
+        void UnsubscribeAsync(string connectionId);
     }
 }

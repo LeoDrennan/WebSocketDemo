@@ -42,6 +42,7 @@ namespace Application.RaceSession
             };
         }
 
-        public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto dto) => await _raceSessionBroadcastService.BroadcastUpdateAsync(sessionId, dto);
+        public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto dto, CancellationToken cancellationToken)
+            => await _raceSessionBroadcastService.BroadcastUpdateAsync(sessionId, dto, cancellationToken);
     }
 }
