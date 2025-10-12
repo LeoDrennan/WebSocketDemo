@@ -1,5 +1,5 @@
-﻿using Application.RaceState;
-using Application.RaceState.Abstractions;
+﻿using Application.RaceSession;
+using Application.RaceSession.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.DependencyInjection
@@ -8,8 +8,8 @@ namespace Application.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddSingleton<IRaceStateWorkerService, RaceStateWorkerService>();
-            services.AddHostedService<RaceStateWorker>();
+            services.AddSingleton<IRaceSessionWorkerService, RaceSessionWorkerService>();
+            services.AddHostedService<RaceSessionWorker>();
 
             return services;
         }

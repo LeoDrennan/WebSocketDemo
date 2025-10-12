@@ -1,14 +1,16 @@
-﻿using Application.RaceState.Abstractions;
+﻿using Application.RaceSession.Abstractions;
 using Microsoft.Extensions.Hosting;
 
-namespace Application.RaceState
+namespace Application.RaceSession
 {
-    public class RaceStateWorker : BackgroundService
+    public class RaceSessionWorker : BackgroundService
     {
-        // Injecting so we can unit test the functionality of this class
-        private readonly IRaceStateWorkerService _workerService;
+        private const int RequestIntervalMilliseconds = 3000;
 
-        public RaceStateWorker(IRaceStateWorkerService raceStateWorkerService)
+        // Injecting so we can unit test the functionality of this class
+        private readonly IRaceSessionWorkerService _workerService;
+
+        public RaceSessionWorker(IRaceSessionWorkerService raceStateWorkerService)
         {
             _workerService = raceStateWorkerService ?? throw new ArgumentNullException(nameof(raceStateWorkerService));
         }
@@ -18,6 +20,8 @@ namespace Application.RaceState
             while (!cancellationToken.IsCancellationRequested)
             {
                 await _workerService.CheckForChangesAsync(cancellationToken);
+
+                await Task.Delay(RequestIntervalMilliseconds, cancellationToken);
             }
         }
     }

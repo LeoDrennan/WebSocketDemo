@@ -1,15 +1,15 @@
-﻿using Application.RaceState.Abstractions;
+﻿using Application.RaceSession.Abstractions;
 using Domain.Models;
-using Infrastructure.RaceState.Abstractions;
+using Infrastructure.RaceSession.Abstractions;
 
-namespace Application.RaceState
+namespace Application.RaceSession
 {
-    public class RaceStateWorkerService : IRaceStateWorkerService
+    public class RaceSessionWorkerService : IRaceSessionWorkerService
     {
-        private readonly IRaceStateClient _raceStateClient;
-        private RaceStateDTO? _previousRaceState;
+        private readonly IRaceSessionClient _raceStateClient;
+        private RaceSessionDto? _previousRaceState;
 
-        public RaceStateWorkerService(IRaceStateClient raceStatePoller)
+        public RaceSessionWorkerService(IRaceSessionClient raceStatePoller)
         {
             _raceStateClient = raceStatePoller ?? throw new ArgumentNullException(nameof(raceStatePoller));
         }
@@ -18,7 +18,7 @@ namespace Application.RaceState
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            RaceStateDTO currentRaceState = await _raceStateClient.GetCurrentStateAsync(cancellationToken);
+            RaceSessionDto? currentRaceState = await _raceStateClient.GetCurrentStateAsync(cancellationToken);
 
             // Using records value based equality here
             if (currentRaceState == _previousRaceState)
@@ -27,6 +27,7 @@ namespace Application.RaceState
             }
 
             // TODO: Broadcast data change
+            Console.WriteLine("Change detected");
 
             _previousRaceState = currentRaceState;
         }
