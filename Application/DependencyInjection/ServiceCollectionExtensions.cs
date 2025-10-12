@@ -8,7 +8,8 @@ namespace Application.DependencyInjection
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IRaceStateWorkerService, RaceStateWorkerService>();
+            services.AddSingleton<IRaceStateWorkerService, RaceStateWorkerService>();
+            services.AddHostedService<RaceStateWorker>();
 
             return services;
         }
