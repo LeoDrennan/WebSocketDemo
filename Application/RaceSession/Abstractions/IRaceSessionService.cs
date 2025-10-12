@@ -2,5 +2,6 @@
 {
     public interface IRaceSessionService
     {
+        Task SubscribeAsync(string connectionId, string sessionId);
     }
 }

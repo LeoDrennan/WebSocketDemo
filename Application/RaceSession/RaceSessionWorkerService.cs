@@ -7,19 +7,22 @@ namespace Application.RaceSession
 {
     public class RaceSessionWorkerService : IRaceSessionWorkerService
     {
-        private readonly IRaceSessionClient _raceStateClient;
+        private readonly IRaceSessionBroadcastService _raceSessionBroadcastService;
+        private readonly IRaceSessionClient _raceSessionClient;
+
         private RaceSessionDto? _previousRaceSession;
 
-        public RaceSessionWorkerService(IRaceSessionClient raceStatePoller)
+        public RaceSessionWorkerService(IRaceSessionBroadcastService raceSessionBroadcastService, IRaceSessionClient raceSessionClient)
         {
-            _raceStateClient = raceStatePoller ?? throw new ArgumentNullException(nameof(raceStatePoller));
+            _raceSessionBroadcastService = raceSessionBroadcastService ?? throw new ArgumentNullException(nameof(raceSessionBroadcastService));
+            _raceSessionClient = raceSessionClient ?? throw new ArgumentNullException(nameof(raceSessionClient));
         }
 
         public async Task<SessionUpdateDto> CheckForChangesAsync(string sessionId, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            RaceSessionDto? currentRaceSession = await _raceStateClient.GetCurrentStateAsync(sessionId, cancellationToken);
+            RaceSessionDto? currentRaceSession = await _raceSessionClient.GetCurrentStateAsync(sessionId, cancellationToken);
 
             // Using records value based equality here
             if (currentRaceSession == _previousRaceSession)
@@ -38,5 +41,7 @@ namespace Application.RaceSession
                 RaceSession = currentRaceSession
             };
         }
+
+        public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto dto) => await _raceSessionBroadcastService.BroadcastUpdateAsync(sessionId, dto);
     }
 }
