@@ -10,6 +10,17 @@ namespace Presentation
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices();
 
@@ -17,8 +28,11 @@ namespace Presentation
 
             var app = builder.Build();
 
-            app.MapHub<RaceSessionHub>("/session-detail");
-            app.MapHub<SessionsHub>("/sessions");
+            app.UseRouting();
+            app.UseCors("AllowReactApp");
+
+            app.MapHub<RaceSessionHub>("/session-detail").RequireCors("AllowReactApp");
+            app.MapHub<SessionsHub>("/sessions").RequireCors("AllowReactApp");
 
             app.Run();
         }
