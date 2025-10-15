@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Infrastructure.JSON;
 using Infrastructure.Sessions.Abstractions;
 using System.Text.Json;
 
@@ -24,9 +25,9 @@ namespace Infrastructure.Sessions
                 return new List<SessionDetailDto>();
             }
 
-            string? jsonContent = await response.Content.ReadAsStringAsync(cancellationToken);
+            string jsonContent = await response.Content.ReadAsStringAsync(cancellationToken);
 
-            return jsonContent != null ? JsonSerializer.Deserialize<List<SessionDetailDto>>(jsonContent) : new List<SessionDetailDto>();
+            return jsonContent != null ? JsonSerializer.Deserialize<List<SessionDetailDto>>(jsonContent, JsonDefaults.CaseInsensitive) : new List<SessionDetailDto>();
         }
     }
 }

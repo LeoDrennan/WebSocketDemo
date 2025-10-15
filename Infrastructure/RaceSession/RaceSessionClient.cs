@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Infrastructure.JSON;
 using Infrastructure.RaceSession.Abstractions;
 using System.Text.Json;
 
@@ -29,7 +30,7 @@ namespace Infrastructure.RaceSession
 
             string? jsonContent = await response.Content.ReadAsStringAsync(cancellationToken);
 
-            return JsonSerializer.Deserialize<RaceSessionDto?>(jsonContent);
+            return JsonSerializer.Deserialize<RaceSessionDto?>(jsonContent, JsonDefaults.CaseInsensitive);
         }
 
         private static string GetUrl(string sessionId) => $"{SessionsEndpointUrl}/{sessionId}";

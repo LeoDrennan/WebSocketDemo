@@ -9,7 +9,7 @@ namespace Application.Sessions
     {
         private const int RequestIntervalMilliseconds = 10000;
 
-        private List<SessionDetailDto> _previousSessions;
+        private List<SessionDetailDto> _previousSessions = new List<SessionDetailDto>();
 
         private readonly ISessionsClient _sessionsClient;
         private readonly ISessionsBroadcastService _sessionsBroadcastService;
@@ -29,7 +29,7 @@ namespace Application.Sessions
 
             List<SessionDetailDto> currentSessions = await _sessionsClient.GetCurrentStateAsync(cancellationToken);
 
-            if (!_previousSessions.SequenceEqual(currentSessions))
+            if (currentSessions is null || currentSessions.Count == 0 || _previousSessions.SequenceEqual(currentSessions))
             {
                 return new SessionsUpdateDto()
                 {

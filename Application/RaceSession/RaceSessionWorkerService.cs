@@ -25,7 +25,7 @@ namespace Application.RaceSession
             RaceSessionDto? currentRaceSession = await _raceSessionClient.GetCurrentStateAsync(sessionId, cancellationToken);
 
             // Using records value based equality here
-            if (currentRaceSession == _previousRaceSession)
+            if (currentRaceSession is null ||  currentRaceSession == _previousRaceSession)
             {
                 return new SessionUpdateDto()
                 {
