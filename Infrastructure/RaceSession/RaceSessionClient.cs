@@ -33,6 +33,6 @@ namespace Infrastructure.RaceSession
             return JsonSerializer.Deserialize<RaceSessionDto?>(jsonContent, JsonDefaults.CaseInsensitive);
         }
 
-        private static string GetUrl(string sessionId) => $"{SessionsEndpointUrl}/{sessionId}";
+        private static string GetUrl(string sessionId) => $"{SessionsEndpointUrl}{sessionId}";
     }
 }

@@ -12,9 +12,17 @@ namespace Presentation.Hubs
             _raceSessionService = raceSessionService;
         }
 
-        public async Task SubscribeToSession(string sessionId, CancellationToken cancellationToken)
+        public override async Task OnConnectedAsync()
         {
-            await _raceSessionService.SubscribeAsync(Context.ConnectionId, sessionId, cancellationToken);
+            var httpContext = Context.GetHttpContext();
+            var sessionId = httpContext?.Request.Query["sessionId"];
+
+            if (string.IsNullOrEmpty(sessionId))
+            {
+                return;
+            }
+
+            await _raceSessionService.SubscribeAsync(Context.ConnectionId, sessionId!, Context.ConnectionAborted);
         }
 
         public override async Task OnDisconnectedAsync(Exception? exception)
