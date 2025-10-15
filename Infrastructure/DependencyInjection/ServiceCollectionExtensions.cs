@@ -14,7 +14,7 @@ namespace Infrastructure.DependencyInjection
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddSingleton<IRaceSessionBroadcastService, RaceSessionBroadcastService>();
-            services.AddSingleton<ISessionsBroadcastService, ISessionsBroadcastService>();
+            services.AddSingleton<ISessionsBroadcastService, SessionsBroadcastService>();
 
             services.AddHttpClient<IRaceSessionClient, RaceSessionClient>(client =>
             {

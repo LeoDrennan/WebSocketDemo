@@ -29,7 +29,6 @@ namespace Application.Sessions
 
             List<SessionDetailDto> currentSessions = await _sessionsClient.GetCurrentStateAsync(cancellationToken);
 
-            // Using records value based equality here
             if (!_previousSessions.SequenceEqual(currentSessions))
             {
                 return new SessionsUpdateDto()
