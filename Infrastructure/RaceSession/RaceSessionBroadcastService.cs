@@ -21,7 +21,7 @@ namespace Infrastructure.RaceSession
 
         public async Task BroadcastUpdateAsync(string sessionId, RaceSessionDto session, CancellationToken cancellationToken)
         {
-            await _hubContext.Clients.Group(sessionId).SendAsync("ReceiveSessionUpdate", session, cancellationToken);
+            await _hubContext.Clients.Group(sessionId).SendAsync("SessionDetailUpdate", session, cancellationToken);
         }
     }
 }

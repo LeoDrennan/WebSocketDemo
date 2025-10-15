@@ -17,7 +17,7 @@ namespace Presentation
 
             var app = builder.Build();
 
-            app.MapHub<RaceSessionHub>("/racehub");
+            app.MapHub<RaceSessionHub>("/session-detail");
 
             app.Run();
         }

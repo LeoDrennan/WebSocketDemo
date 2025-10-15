@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{B03B6EE9-0014-4100-B217-14FA5028A246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{B03B6EE9-0014-4100-B217-14FA5028A246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{B7980394-80E4-400E-8B82-5B9CF3B169AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{B7980394-80E4-400E-8B82-5B9CF3B169AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{929B5A2D-72DB-41E2-87BA-4BD3F0A9B79E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{929B5A2D-72DB-41E2-87BA-4BD3F0A9B79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3028230E-F92F-470A-94BE-0455BF2669A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3028230E-F92F-470A-94BE-0455BF2669A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{A50804C5-58CD-4317-9763-FB11D1DC2B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{9F561681-50D9-46A1-9CFF-AD79EA4A31B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{9F561681-50D9-46A1-9CFF-AD79EA4A31B6}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "frontend", "Frontend\frontend.esproj", "{52D61DED-C321-440E-B59F-9A03B1B250F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +41,12 @@ Global
 		{9F561681-50D9-46A1-9CFF-AD79EA4A31B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F561681-50D9-46A1-9CFF-AD79EA4A31B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F561681-50D9-46A1-9CFF-AD79EA4A31B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D61DED-C321-440E-B59F-9A03B1B250F2}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

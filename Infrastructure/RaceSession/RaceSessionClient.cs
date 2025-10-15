@@ -21,6 +21,7 @@ namespace Infrastructure.RaceSession
 
             var response = await _httpClient.GetAsync(url, cancellationToken);
 
+            // Should implement a backoff policy for 429 responses here
             if (!response.IsSuccessStatusCode)
             {
                 return new RaceSessionDto();
