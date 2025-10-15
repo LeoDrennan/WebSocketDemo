@@ -1,6 +1,6 @@
-﻿using Shared.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
 
 namespace Presentation.Hubs
 {
-    public class SessionsHub : SessionsHubBase { }
+    public class SessionsHub : Hub { }
 }

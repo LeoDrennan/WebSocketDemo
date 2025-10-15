@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 
-namespace Infrastructure.RaceSession.Abstractions
+namespace Shared.RaceSession.Abstractions
 {
     public interface IRaceSessionBroadcastService
     {

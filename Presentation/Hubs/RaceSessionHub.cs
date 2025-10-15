@@ -1,9 +1,9 @@
 ﻿using Application.RaceSession.Abstractions;
-using Shared.SignalR;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Presentation.Hubs
 {
-    public class RaceSessionHub : RaceSessionHubBase
+    public class RaceSessionHub : Hub
     {
         private readonly IRaceSessionService _raceSessionService;
 

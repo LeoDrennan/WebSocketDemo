@@ -1,6 +1,6 @@
 ﻿using Domain.Models;
 
-namespace Infrastructure.Sessions.Abstractions
+namespace Shared.Sessions.Abstractions
 {
     public interface ISessionsBroadcastService
     {

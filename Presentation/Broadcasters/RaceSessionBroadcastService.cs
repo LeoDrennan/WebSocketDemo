@@ -1,15 +1,15 @@
 ﻿using Domain.Models;
-using Infrastructure.RaceSession.Abstractions;
 using Microsoft.AspNetCore.SignalR;
-using Shared.SignalR;
+using Presentation.Hubs;
+using Shared.RaceSession.Abstractions;
 
 namespace Infrastructure.RaceSession
 {
     public class RaceSessionBroadcastService : IRaceSessionBroadcastService
     {
-        private readonly IHubContext<RaceSessionHubBase> _hubContext;
+        private readonly IHubContext<RaceSessionHub> _hubContext;
 
-        public RaceSessionBroadcastService(IHubContext<RaceSessionHubBase> hubContext)
+        public RaceSessionBroadcastService(IHubContext<RaceSessionHub> hubContext)
         {
             _hubContext = hubContext;
         }

@@ -2,6 +2,7 @@
 using Application.Models;
 using Domain.Models;
 using Infrastructure.RaceSession.Abstractions;
+using Shared.RaceSession.Abstractions;
 
 namespace Application.RaceSession
 {

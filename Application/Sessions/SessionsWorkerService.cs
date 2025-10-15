@@ -2,6 +2,7 @@
 using Application.Sessions.Abstractions;
 using Domain.Models;
 using Infrastructure.Sessions.Abstractions;
+using Shared.Sessions.Abstractions;
 
 namespace Application.Sessions
 {

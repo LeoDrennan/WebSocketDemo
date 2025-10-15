@@ -1,6 +1,6 @@
 ﻿using Application.RaceSession.Abstractions;
 using Application.State.Abstractions;
-using Infrastructure.RaceSession.Abstractions;
+using Shared.RaceSession.Abstractions;
 
 namespace Application.RaceSession
 {

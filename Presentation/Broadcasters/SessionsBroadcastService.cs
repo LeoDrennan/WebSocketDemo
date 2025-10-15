@@ -1,15 +1,15 @@
 ﻿using Domain.Models;
-using Infrastructure.Sessions.Abstractions;
 using Microsoft.AspNetCore.SignalR;
-using Shared.SignalR;
+using Presentation.Hubs;
+using Shared.Sessions.Abstractions;
 
-namespace Infrastructure.Sessions
+namespace Presentation.Sessions
 {
     public class SessionsBroadcastService : ISessionsBroadcastService
     {
-        private readonly IHubContext<SessionsHubBase> _hubContext;
+        private readonly IHubContext<SessionsHub> _hubContext;
 
-        public SessionsBroadcastService(IHubContext<SessionsHubBase> hubContext)
+        public SessionsBroadcastService(IHubContext<SessionsHub> hubContext)
         {
             _hubContext = hubContext ?? throw new ArgumentNullException(nameof(hubContext));
         }

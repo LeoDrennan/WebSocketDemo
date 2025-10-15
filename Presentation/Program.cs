@@ -1,5 +1,6 @@
 using Application.DependencyInjection;
 using Infrastructure.DependencyInjection;
+using Presentation.DependencyInjection;
 using Presentation.Hubs;
 
 namespace Presentation
@@ -21,6 +22,7 @@ namespace Presentation
                 });
             });
 
+            builder.Services.AddPresentationServices();
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructureServices();
 
