@@ -37,7 +37,7 @@ const SessionDetailsPage = () => {
         <div className="container mt-4">
             <h2 className="mb-4">Session Details</h2>
             {session ? (
-                <SessionDetailsTable session={session} />
+                <SessionDetailsTable competitors={session?.competitors || []} />
             ) : (
                 <p>Waiting for session data...</p>
             )}

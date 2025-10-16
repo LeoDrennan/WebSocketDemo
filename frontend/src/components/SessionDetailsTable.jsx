@@ -13,7 +13,6 @@ const SessionDetailsTable = ({ competitors }) => {
                     <th>Laps</th>
                     <th>Fastest Lap</th>
                     <th>Last Lap</th>
-                    <th>Finished</th>
                 </tr>
             </thead>
             <tbody>
