@@ -19,6 +19,9 @@ namespace Presentation.Hubs
         public override async Task OnConnectedAsync()
         {
             List<SessionDetailDto> sessionDetails = await _sessionsClient.GetCurrentStateAsync(Context.ConnectionAborted);
+
+            // I'm using the WebSocket to send the first data over - from research it seems to be better to have an API for first call
+            // Would do this next but out of scope for task
             await _sessionsBroadcastService.BroadcastUpdateAsync(sessionDetails, Context.ConnectionAborted);
 
             await base.OnConnectedAsync();

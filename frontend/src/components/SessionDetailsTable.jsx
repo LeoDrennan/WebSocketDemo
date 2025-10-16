@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Keeping things simple for now with only competitor data
+// This seems to be the most frequently changing data so is best for proof of concept
 const SessionDetailsTable = ({ competitors }) => {
     return (
         <table className="table table-sm table-bordered">
