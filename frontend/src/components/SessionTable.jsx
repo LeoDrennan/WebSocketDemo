@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as signalR from '@microsoft/signalr';
 
 const SessionTable = () => {
     const [sessions, setSessions] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const connection = new signalR.HubConnectionBuilder()
@@ -57,6 +59,14 @@ const SessionTable = () => {
                             </td>
                             <td>{new Date(session.startTime).toLocaleString()}</td>
                             <td>{session.duration}</td>
+                            <td>
+                                <button
+                                    className="btn btn-primary btn-sm"
+                                    onClick={() => navigate(`/sessions/${session.sessionId}`)}
+                                >
+                                    Details
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -74,7 +84,7 @@ function getStateColor(state) {
         case 'completed':
             return 'secondary';
         default:
-            return 'light';
+            return 'dark';
     }
 }
 
