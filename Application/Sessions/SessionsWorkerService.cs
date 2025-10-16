@@ -24,6 +24,7 @@ namespace Application.Sessions
         public Task BroadcastUpdateAsync(List<SessionDetailDto> dto, CancellationToken cancellationToken)
             => _sessionsBroadcastService.BroadcastUpdateAsync(dto, cancellationToken);
 
+        // This class is a good candidate for unit testing
         public async Task<SessionsUpdateDto> CheckForChangesAsync(CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();

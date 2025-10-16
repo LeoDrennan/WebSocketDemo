@@ -28,6 +28,7 @@ namespace Infrastructure.RaceSession
                 return new RaceSessionDto();
             }
 
+            // Also would be a good idea to add more robust deserialization here
             string? jsonContent = await response.Content.ReadAsStringAsync(cancellationToken);
 
             return JsonSerializer.Deserialize<RaceSessionDto?>(jsonContent, JsonDefaults.CaseInsensitive);
